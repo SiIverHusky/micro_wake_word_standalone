@@ -40,7 +40,11 @@
 #include <random>
 #endif
 #ifdef USE_ESP32
+#if ESP_IDF_VERSION >= ESP_IDF_VERSION_VAL(5, 0, 0)
+#include "esp_rom_crc.h"
+#else
 #include "esp32/rom/crc.h"
+#endif
 #endif
 
 #if defined(CONFIG_SOC_IEEE802154_SUPPORTED) || defined(USE_ESP32_IGNORE_EFUSE_MAC_CRC)
